@@ -76,6 +76,15 @@ ul {
     width: 360px;
 }
 
+.zoom-on-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoom-on-hover:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .info {
     display: flex;
     justify-content: center;

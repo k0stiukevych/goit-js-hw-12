@@ -2,8 +2,8 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import { fetchPhotos } from './js/pixabay-api';
 import { createMarkup } from './js/render-functions';
+import { fetchPhotos } from './js/pixabay-api';
 
 const imgContainer = document.querySelector('.gallery');
 const searchForm = document.querySelector('.search-form');
@@ -95,3 +95,14 @@ async function onSearch(event) {
 }
 
 searchForm.addEventListener('submit', onSearch);
+
+function scrollPage() {
+  const { height: cardHeight } = document
+    .querySelector('.photo-container')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+}
