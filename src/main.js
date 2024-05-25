@@ -66,8 +66,6 @@ async function onLoadMore() {
   scrollPage();
 }
 
-fetchPhotosButton.addEventListener('click', onLoadMore);
-
 async function onSearch(event) {
   event.preventDefault();
   const searchQuery = event.target.elements.searchKeyword.value.trim();
@@ -86,6 +84,8 @@ async function onSearch(event) {
   try {
     page = 1;
     await fetchAndDisplayPhotos(searchQuery, page);
+    fetchPhotosButton.removeEventListener('click', onLoadMore); // Видалення старого слухача, якщо він був
+    fetchPhotosButton.addEventListener('click', onLoadMore); // Додавання нового слухача
   } catch (error) {
     console.log(error);
   } finally {
